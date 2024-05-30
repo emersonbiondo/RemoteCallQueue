@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AppClient.Presentations.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="vm:ClientViewModel"
+             x:Class="AppClient.Presentations.Views.ClientView"
+             Title="{Binding Title}">
+    <VerticalStackLayout>
+        <Frame Margin="10">
+            <VerticalStackLayout>
+                <HorizontalStackLayout Margin="0,0,0,5">
+                    <Label Text="{Binding TitleMessage}" VerticalOptions="Center"/>
+                    <Entry VerticalOptions="Center" MinimumWidthRequest="400" Margin="20,0,0,0" Text="{Binding Client.Message}">
+                        <Entry.Behaviors>
+                            <toolkit:TextValidationBehavior
+                                MinimumLength="1"
+                                Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                                IsValid="{Binding IsMessageValid}"/>
+                        </Entry.Behaviors>
+                    </Entry>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+        <Frame Margin="10">
+            <HorizontalStackLayout HorizontalOptions="End">
+                <Button Text="{Binding TitleButtonSend}" BackgroundColor="Green" Margin="0,0,10,0" WidthRequest="200" Command="{Binding SendCommand}"/>
+                <Button Text="{Binding TitleButtonAwait}" BackgroundColor="DarkRed" WidthRequest="200" Command="{Binding AwaitCommand}"/>
+            </HorizontalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AppServer.Presentations.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="vm:ServerViewModel"
+             x:Class="AppServer.Presentations.Views.ServerView"
+             Title="{Binding Title1}"
+             BackgroundImageSource="{Binding Background}">
+    <Grid>
+        <AbsoluteLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <HorizontalStackLayout Grid.Row="0" Margin="20">
+                    <Label Text="{Binding Server.Title2}" FontAttributes="Bold" FontSize="{Binding FontTitle2}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Grid.Row="1" Margin="20">
+                    <Label Text="{Binding Server.Message}" FontAttributes="Bold" FontSize="{Binding FontMessage}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Grid.Row="2" Margin="20">
+                    <Label Text="{Binding Server.Title3}" FontAttributes="Bold" FontSize="{Binding FontTitle3}"/>
+                </HorizontalStackLayout>
+            </Grid>
+        </AbsoluteLayout>
+        <AbsoluteLayout HorizontalOptions="End" VerticalOptions="End" Margin="50">
+            <Frame>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <HorizontalStackLayout Grid.Row="0" Margin="20">
+                        <Label Text="{Binding Title4}" FontAttributes="Bold" FontSize="{Binding FontTitle4}"/>
+                    </HorizontalStackLayout>
+                    <CollectionView Grid.Row="1" ItemsSource="{Binding Server.Messages}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding}" FontSize="{Binding FontOldMessage}"></Label>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Frame>            
+        </AbsoluteLayout>
+    </Grid>
+</ContentPage>
